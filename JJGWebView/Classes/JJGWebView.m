@@ -11,7 +11,7 @@
 
 @implementation JJGWebView
 
-@synthesize webViewToolbar, webView, webViewURL, actionButton, refreshButton, backButton, forwardButton;
+@synthesize webViewToolbar, webView, webViewURL, doneButton, actionButton, refreshButton, backButton, forwardButton, delegate;
 
 
 #pragma mark Regular controller methods
@@ -115,6 +115,9 @@
 
 }
 
+- (IBAction)closeAction:(id)sender {
+    [delegate closedJJGWebView:self];
+}
 
 #pragma mark Memory management
 
