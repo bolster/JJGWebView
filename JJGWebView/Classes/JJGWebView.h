@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 
 @class JJGWebView;
+@class SHKActionSheet;
 
 @protocol JJGWebViewDelegate <NSObject>
 - (void)closedJJGWebView:(JJGWebView*)webView;    
@@ -24,11 +25,12 @@
 	IBOutlet UIBarButtonItem *backButton;
 	IBOutlet UIBarButtonItem *forwardButton;
 
-	UIActionSheet *actionButtonActionSheet;
+	SHKActionSheet *actionButtonActionSheet;
 	NSURL *webViewURL;
 	
     id <JJGWebViewDelegate> delegate;
     
+    BOOL actionSheetShown;
 }
 
 @property (nonatomic,retain) UIToolbar *webViewToolbar;
@@ -40,6 +42,7 @@
 @property (nonatomic,retain) UIBarButtonItem *backButton;
 @property (nonatomic,retain) UIBarButtonItem *forwardButton;
 @property (nonatomic,assign) id <JJGWebViewDelegate> delegate;
+@property (nonatomic,retain) SHKActionSheet *actionButtonActionSheet;
 
 - (IBAction)actionButtonSelected:(id)sender;
 - (IBAction)closeAction:(id)sender;

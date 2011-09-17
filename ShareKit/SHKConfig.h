@@ -14,8 +14,8 @@
 // App Description
 // These values are used by any service that shows 'shared from XYZ'
 
-#define SHKMyAppName			@"JJGWebView"
-#define SHKMyAppURL				@"http://www.midwesternmac.com/"
+#define SHKMyAppName			@"Livestrong Cancer Guide"
+#define SHKMyAppURL				@"http://www.livestrong.org/"
 
 
 
@@ -46,8 +46,8 @@
 // If SHKFacebookUseSessionProxy is enabled then SHKFacebookSecret is ignored and should be left blank
 
 #define SHKFacebookUseSessionProxy  NO 
-#define SHKFacebookKey				@""
-#define SHKFacebookSecret			@""
+#define SHKFacebookKey				@"176856172390051"
+#define SHKFacebookSecret			@"d997c21c84c4d62f765c7e88e948cd8e"
 #define SHKFacebookSessionProxyURL  @""
 
 // Read It Later - http://readitlaterlist.com/api/?shk
@@ -69,15 +69,15 @@
  2. 'Application Type' should be set to BROWSER (not client)
  3. 'Callback URL' should match whatever you enter in SHKTwitterCallbackUrl.  The callback url doesn't have to be an actual existing url.  The user will never get to it because ShareKit intercepts it before the user is redirected.  It just needs to match.
  */
-#define SHKTwitterConsumerKey		@""
-#define SHKTwitterSecret			@""
-#define SHKTwitterCallbackUrl		@"http://www.midwesternmac.com/" // You need to set this if using OAuth, see note above (xAuth users can skip it)
+#define SHKTwitterConsumerKey		@"vmpiJwBToKu2k2xvDPVE9w"
+#define SHKTwitterSecret			@"g9xfgJ1aIlI2qqvKFNhoJ3UDdpOhMfRTFu1tzfj97X8"
+#define SHKTwitterCallbackUrl		@"http://livestrong.org" // You need to set this if using OAuth, see note above (xAuth users can skip it)
 #define SHKTwitterUseXAuth			0 // To use xAuth, set to 1
-#define SHKTwitterUsername			@"midwesternmac" // Enter your app's twitter account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
+#define SHKTwitterUsername			@"livestrong" // Enter your app's twitter account if you'd like to ask the user to follow it when logging in. (Only for xAuth)
 
 // Bit.ly (for shortening URLs on Twitter) - http://bit.ly/account/register - after signup: http://bit.ly/a/your_api_key
-#define SHKBitLyLogin				@""
-#define SHKBitLyKey					@""
+#define SHKBitLyLogin				@"livestrongcancerguide"
+#define SHKBitLyKey					@"R_759676681d18411b16757e2b5356fd14"
 
 // ShareMenu Ordering
 #define SHKShareMenuAlphabeticalOrder 1 // Setting this to 1 will show list in Alphabetical Order, setting to 0 will follow the order in SHKShares.plist
@@ -155,6 +155,6 @@
  These settings can be left as is.  This only need to be changed for uber custom installs.
  */
 
-#define SHK_MAX_FAV_COUNT			3
+#define SHK_MAX_FAV_COUNT			0
 #define SHK_FAVS_PREFIX_KEY			@"SHK_FAVS_"
 #define SHK_AUTH_PREFIX				@"SHK_AUTH_"

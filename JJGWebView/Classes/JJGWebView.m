@@ -11,7 +11,7 @@
 
 @implementation JJGWebView
 
-@synthesize webViewToolbar, webView, webViewURL, doneButton, actionButton, refreshButton, backButton, forwardButton, delegate;
+@synthesize webViewToolbar, webView, webViewURL, doneButton, actionButton, refreshButton, backButton, forwardButton, delegate, actionButtonActionSheet;
 
 
 #pragma mark Regular controller methods
@@ -88,6 +88,21 @@
     }
 }
 
+#pragma mark UIActionSheetDelegate methods
+- (void)didPresentActionSheet:(UIActionSheet *)actionSheet
+{
+    actionSheetShown = YES;
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    actionSheetShown = NO;
+}
+
+- (void)actionSheetCancel:(UIActionSheet *)actionSheet
+{
+    actionSheetShown = NO;
+}
 
 #pragma mark IBAction outlets
 
@@ -102,20 +117,25 @@
 	
 	// Get the ShareKit action sheet
 	SHKActionSheet *actionSheet = [SHKActionSheet actionSheetForItem:item];
-	
+    actionSheet.delegate = self;
+    self.actionButtonActionSheet = actionSheet;
+//    [actionSheet release];
+    
 	// Check if we're using an iPad or iPhone
 	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
 		// For iPad: Display the action sheet over the bar button item.
 		// @todo - If a user repeatedly taps the action button, multiple popups appear, overlaying one another.
-		[actionSheet showFromBarButtonItem:actionButton animated:NO];
+        if (!actionSheetShown) {
+            [self.actionButtonActionSheet showFromBarButtonItem:actionButton animated:YES];
+        }
 	} else {
 		// For iPhone/iPod Touch: Display the action sheet over the entire window - otherwise cancel button is jinxed.
-		[actionSheet showInView:self.navigationController.view];
+		[self.actionButtonActionSheet showInView:self.navigationController.view];
 	}
-
 }
 
 - (IBAction)closeAction:(id)sender {
+    [self.actionButtonActionSheet dismissWithClickedButtonIndex:-1 animated:NO]; 
     [delegate closedJJGWebView:self];
 }
 

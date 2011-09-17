@@ -268,48 +268,51 @@ BOOL SHKinit;
 {	
 	NSArray *favoriteSharers = [[NSUserDefaults standardUserDefaults] objectForKey:[NSString stringWithFormat:@"%@%i", SHK_FAVS_PREFIX_KEY, type]];
 		
-	// set defaults
-	if (favoriteSharers == nil)
-	{
-		switch (type) 
-		{
-			case SHKShareTypeURL:
-				favoriteSharers = [NSArray arrayWithObjects:@"SHKTwitter",@"SHKFacebook",@"SHKReadItLater",nil];
-				break;
-				
-			case SHKShareTypeImage:
-				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail",@"SHKFacebook",@"SHKCopy",nil];
-				break;
-				
-			case SHKShareTypeText:
-				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail",@"SHKTwitter",@"SHKFacebook", nil];
-				break;
-				
-			case SHKShareTypeFile:
-				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail", nil];
-				break;
-		}
-		
-		// Save defaults to prefs
-		[self setFavorites:favoriteSharers forType:type];
-	}
-	
-	// Make sure the favorites are not using any exclusions, remove them if they are.
-	NSArray *exclusions = [[NSUserDefaults standardUserDefaults] objectForKey:@"SHKExcluded"];
-	if (exclusions != nil)
-	{
-		NSMutableArray *newFavs = [favoriteSharers mutableCopy];
-		for(NSString *sharerId in exclusions)
-		{
-			[newFavs removeObject:sharerId];
-		}
-		
-		// Update
-		favoriteSharers = [NSArray arrayWithArray:newFavs];
-		[self setFavorites:favoriteSharers forType:type];
-		
-		[newFavs release];
-	}
+    favoriteSharers = [NSArray arrayWithObjects:@"SHKSafari", @"SHKTwitter", @"SHKFacebook", nil];
+    [self setFavorites:favoriteSharers forType:type];
+    
+//	// set defaults
+//	if (favoriteSharers == nil)
+//	{
+//		switch (type) 
+//		{
+//			case SHKShareTypeURL:
+//				favoriteSharers = [NSArray arrayWithObjects:@"SHKTwitter",@"SHKFacebook",@"SHKReadItLater",nil];
+//				break;
+//				
+//			case SHKShareTypeImage:
+//				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail",@"SHKFacebook",@"SHKCopy",nil];
+//				break;
+//				
+//			case SHKShareTypeText:
+//				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail",@"SHKTwitter",@"SHKFacebook", nil];
+//				break;
+//				
+//			case SHKShareTypeFile:
+//				favoriteSharers = [NSArray arrayWithObjects:@"SHKMail", nil];
+//				break;
+//		}
+//		
+//		// Save defaults to prefs
+//		[self setFavorites:favoriteSharers forType:type];
+//	}
+//	
+//	// Make sure the favorites are not using any exclusions, remove them if they are.
+//	NSArray *exclusions = [[NSUserDefaults standardUserDefaults] objectForKey:@"SHKExcluded"];
+//	if (exclusions != nil)
+//	{
+//		NSMutableArray *newFavs = [favoriteSharers mutableCopy];
+//		for(NSString *sharerId in exclusions)
+//		{
+//			[newFavs removeObject:sharerId];
+//		}
+//		
+//		// Update
+//		favoriteSharers = [NSArray arrayWithArray:newFavs];
+//		[self setFavorites:favoriteSharers forType:type];
+//		
+//		[newFavs release];
+//	}
 	
 	return favoriteSharers;
 }
